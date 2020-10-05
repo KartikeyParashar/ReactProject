@@ -1,0 +1,4 @@
+.Nav a:hover,
+.Nav a.active {
+  color: blue;
+}
