@@ -1,4 +1,15 @@
 .Nav a:hover,
+.Nav a.active,
 .Nav a.active {
-  color: blue;
+  border-bottom: 4px solid yellow;
+}
+
+
+
+@media screen and (max-width: 800px) {
+  .Nav {
+    overflow: hidden;
+    float: none;
+    width: 100%;
+  }
 }

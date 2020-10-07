@@ -3,7 +3,6 @@ import {
 MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBFormInline,
 MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem
 } from "mdbreact";
-import { Router } from 'react-router-dom';
 
 import Logo from '../Logo/Logo';
 import './Navbar.css';
@@ -20,23 +19,28 @@ toggleCollapse = () => {
 render() {
   return (
     <div className="Nav">
-      <MDBNavbar color="red" dark expand="md" style={{height: "50px"}}>
-        <MDBNavbarBrand>
-          <strong className="white-text"><Logo /></strong>
-        </MDBNavbarBrand>
-        <MDBNavbarBrand>
-          <strong className="white-text">GramFactory</strong>
-        </MDBNavbarBrand>
-        <MDBNavbarToggler onClick={this.toggleCollapse} />
-        <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
-          <MDBNavbarNav right>
-            <MDBNavItem active>
-              <MDBNavLink active to="/home" className="font-weight-bold">Home</MDBNavLink>
-            </MDBNavItem>
-          </MDBNavbarNav>
-        </MDBCollapse>
-      </MDBNavbar>
-    </div>
+    <MDBNavbar color="red accent-2" light expand="md">
+      <MDBNavbarBrand>
+        <strong className="white-text"><Logo /></strong>
+      </MDBNavbarBrand>
+      <MDBNavbarBrand>
+        <strong className="white-text">GramFactory</strong>
+      </MDBNavbarBrand>
+      <MDBNavbarToggler onClick={this.toggleCollapse} />
+      <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
+        <MDBNavbarNav center>
+          <MDBNavItem>
+            <MDBNavLink hover to="/home" className="font-weight-bold" style={{color: '#092709'}}>Home</MDBNavLink>
+          </MDBNavItem>
+        </MDBNavbarNav>
+        <MDBNavbarNav right>
+          <MDBNavItem>
+            <MDBNavLink hover to="/logout" className="font-weight-bold" style={{color: '#092709'}}>Logout</MDBNavLink>
+          </MDBNavItem>
+        </MDBNavbarNav>
+      </MDBCollapse>
+    </MDBNavbar>
+  </div>
     );
   }
 }

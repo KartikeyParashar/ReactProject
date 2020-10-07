@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { MDBBadge, MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
 
-import './Warehouse_Inventory.css';
-import Spinner from '../../components/Spinner/Spinner';
+import '../Warehouse_Inventory.css';
+import Spinner from '../../../components/Spinner/Spinner';
 
 
-class Warehouse_Inventory_by_SKU extends Component {
+class Expired_Warehouse_Inventory extends Component {
   state = {
     serialized_data: [],
     loading: true
@@ -15,10 +15,11 @@ class Warehouse_Inventory_by_SKU extends Component {
   async componentDidMount() {
     try {
       console.log(this.props)
-      const res = await fetch('http://127.0.0.1:8080/wms/api/warehouse_inventory_data/' + this.props.match.params.id);
-      const warehouse_data_by_sku = await res.json();
+      console.log(this.state.serialized_data)
+      const res = await fetch('http://127.0.0.1:8080/wms/api/expired_warehouse_inventory_type/');
+      const expired_warehouse_data = await res.json();
       this.setState({
-        serialized_data: warehouse_data_by_sku["data"],
+        serialized_data: expired_warehouse_data["data"],
         loading: false
       });
     } catch (e) {
@@ -89,7 +90,7 @@ class Warehouse_Inventory_by_SKU extends Component {
 
       return (
          <div className="Warehouse_Inventory">
-            <h3><span className="d-block p-2 font-weight-bold" style={{color: "red"}}>Warehouse Inventory By SKU</span></h3>
+            <h3><span className="d-block p-2 font-weight-bold" style={{color: "red"}}>Warehouse Inventory</span></h3>
             {table}
          </div>
       )
@@ -97,4 +98,4 @@ class Warehouse_Inventory_by_SKU extends Component {
 
 }
 
-export default withRouter(Warehouse_Inventory_by_SKU);
+export default withRouter(Expired_Warehouse_Inventory);

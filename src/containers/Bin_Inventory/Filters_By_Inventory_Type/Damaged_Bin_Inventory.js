@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { MDBBadge, MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
 
-import './Bin_Inventory.css';
-import Search from '../../components/Search/Search';
-import Spinner from '../../components/Spinner/Spinner';
+import '../Bin_Inventory.css';
+import Spinner from '../../../components/Spinner/Spinner';
 
 
-class Bin_Inventory_By_SKU extends Component {
+class Damaged_Bin_Inventory extends Component {
   state = {
     serialized_data: [],
     loading: true
@@ -15,10 +14,10 @@ class Bin_Inventory_By_SKU extends Component {
 
   async componentDidMount() {
     try {
-      const res = await fetch('http://127.0.0.1:8080/wms/api/bin_inventory_data/' + this.props.match.params.id);
-      const bin_data = await res.json();
+      const res = await fetch('http://127.0.0.1:8080/wms/api/damaged_bin_inventory_type/');
+      const damaged_bin_data = await res.json();
       this.setState({
-        serialized_data: bin_data["data"],
+        serialized_data: damaged_bin_data["data"],
         loading: false
       });
     } catch (e) {
@@ -92,8 +91,7 @@ class Bin_Inventory_By_SKU extends Component {
 
       return (
          <div className="Bin_Inventory">
-            <h3><span className="d-block p-2 font-weight-bold" style={{color: "red"}}>Bin Inventory by SKU</span></h3>
-            <Search />
+            <h3><span className="d-block p-2 font-weight-bold" style={{color: "red"}}>Bin Inventory</span></h3>
             {table}
          </div>
       )
@@ -101,4 +99,4 @@ class Bin_Inventory_By_SKU extends Component {
 
 }
 
-export default withRouter(Bin_Inventory_By_SKU);
+export default withRouter(Damaged_Bin_Inventory);
